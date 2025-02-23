@@ -5,9 +5,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
+
     @GetMapping("/")
     public String index() {
-        return "Hello World truyen dep trai";
+        return "Hello World truyen dep trai quá đi ";
+    }
+
+    @GetMapping("/user")
+    public String userPage() {
+        return "Only user";
+    }
+
+    @GetMapping("/admin")
+    public String adminPage() {
+        return "Only admin";
     }
 
 }
