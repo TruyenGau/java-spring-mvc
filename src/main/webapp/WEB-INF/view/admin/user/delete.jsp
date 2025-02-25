@@ -24,7 +24,8 @@
                     <div class="row">
                         <div class="col-md-6 col-12 mx-auto">
                             <div class="d-flex justify-content-between">
-                                <h3>Delete the user with id = ${id}</h3>
+                                <h3>Delete the user with id = ${id} </h3>
+                                <h3>truyen dep trai</h3>
                             </div>
 
                             <hr />
