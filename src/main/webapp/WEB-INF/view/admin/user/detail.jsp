@@ -34,8 +34,8 @@
                                             <h3>User detail with ${id}</h3>
                                         </div>
 
-                                        <hr />
-                                        <div class="card" style="width: 60%">
+                                        <hr style="width: 80%;" />
+                                        <div class="card" style="width: 80%">
                                             <div class="card-header">
                                                 User information
                                             </div>
