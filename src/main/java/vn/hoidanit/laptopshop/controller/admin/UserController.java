@@ -10,6 +10,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.servlet.ServletContext;
+import jakarta.validation.Valid;
 import vn.hoidanit.laptopshop.domain.User;
 import vn.hoidanit.laptopshop.repository.UserRepository;
 import vn.hoidanit.laptopshop.service.UploadService;
@@ -70,12 +73,20 @@ public class UserController {
     }
 
     @PostMapping("/admin/user/create")
-    public String createUserPage(Model model, @ModelAttribute("newUser") User hoidanit,
-            @RequestParam("nameFile") MultipartFile file) {
-        String avatar = this.uploadService.HandleSaveUploadFile(file, "avatar");
-        // System.out.println("run here" + hoidanit);
-        // System.out.println(avatar);
+    public String createUserPage(Model model, @ModelAttribute("newUser") @Valid User hoidanit,
+            BindingResult newUserBindingResult, @RequestParam("nameFile") MultipartFile file) {
 
+        List<FieldError> errors = newUserBindingResult.getFieldErrors();
+        for (FieldError error : errors) {
+            System.out.println(error.getField() + " - " + error.getDefaultMessage());
+        }
+
+        // validate
+        if (newUserBindingResult.hasErrors()) {
+            return "/admin/user/create";
+        }
+
+        String avatar = this.uploadService.HandleSaveUploadFile(file, "avatar");
         String hashPassword = this.passwordEncoder.encode(hoidanit.getPassword());
         hoidanit.setAvatar(avatar);
         hoidanit.setPassword(hashPassword);
@@ -87,8 +98,6 @@ public class UserController {
     @RequestMapping("/admin/user/update/{id}")
     public String getUpdateUserPage(Model model, @PathVariable long id) {
         User userCurrent = this.userService.GetUserById(id);
-        // model.addAttribute("user", user);
-        // model.addAttribute("id", id);
         model.addAttribute("newUser", userCurrent);
         return "admin/user/update";
     }
@@ -109,8 +118,6 @@ public class UserController {
     @GetMapping("/admin/user/delete/{id}")
     public String getDeleteUserPage(Model model, @PathVariable long id) {
         model.addAttribute("id", id);
-        // User user = new User();
-        // user.setId(id);
         model.addAttribute("newUser", new User());
         return "admin/user/delete";
     }
