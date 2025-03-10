@@ -50,6 +50,14 @@
                 <div class="container-fluid py-5 mt-5">
                     <div class="container py-5">
                         <div class="row g-4 mb-5">
+                            <div>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Chi tiết sản phẩm</li>
+                                    </ol>
+                                </nav>
+                            </div>
                             <div class="col-lg-8 col-xl-9">
                                 <div class="row g-4">
                                     <div class="col-lg-6">
