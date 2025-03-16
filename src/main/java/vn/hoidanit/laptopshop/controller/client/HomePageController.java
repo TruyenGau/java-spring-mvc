@@ -51,9 +51,9 @@ public class HomePageController {
             @ModelAttribute("registerUser") @Valid RegisterDTO registerDTO,
             BindingResult BindingResult) {
 
-        List<FieldError> errors = BindingResult.getFieldErrors();
-        for (FieldError error : errors) {
-            System.out.println(">>>>>>>>>>>>>>>>>" + error.getField() + " - " + error.getDefaultMessage());
+        // validate
+        if (BindingResult.hasErrors()) {
+            return "client/auth/register";
         }
         User user = this.userService.registerDTOtoUser(registerDTO);
 
@@ -71,4 +71,9 @@ public class HomePageController {
         return "client/auth/login";
     }
 
+    @GetMapping("/access-deny")
+    public String getDenyPage(Model model) {
+        // model.addAttribute("registerUser", new RegisterDTO());
+        return "client/auth/deny";
+    }
 }
