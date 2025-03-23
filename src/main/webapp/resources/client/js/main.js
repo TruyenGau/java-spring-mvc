@@ -273,13 +273,14 @@
         searchParams.delete('target');
         searchParams.delete('price');
 
-
         if (factoryArr.length > 0) {
             searchParams.set('factory', factoryArr.join(','));
         }
+
         if (targetArr.length > 0) {
             searchParams.set('target', targetArr.join(','));
         }
+
         if (priceArr.length > 0) {
             searchParams.set('price', priceArr.join(','));
         }
