@@ -6,7 +6,7 @@
                 <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5) ;">
                     <div class="row g-4">
                         <div class="col-lg-3">
-                            <a href="https://hoidanit.vn" target="_blank">
+                            <a href="" target="_blank">
                                 <h1 class="text-primary mb-0">Laptopshop</h1>
                                 <p class="text-secondary mb-0">@Truyendeptrai</p>
                             </a>
@@ -37,7 +37,7 @@
                         <div class="footer-item">
                             <h4 class="text-light mb-3">Contact</h4>
                             <p>Author: Meo Meo</p>
-                            <p>Website: <a href="https://hoidanit.vn" target="_blank"> truyendeptrai</a></p>
+                            <p>Website: <a href="" target="_blank"> truyendeptrai</a></p>
                         </div>
                     </div>
                 </div>
